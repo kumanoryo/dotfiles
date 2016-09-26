@@ -56,8 +56,11 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
+" 
 let g:syntastic_auto_loc_list = 1
+"" file open時にチェックをする
 let g:syntastic_check_on_open = 1
+"" :wq時にチェックをしない
 let g:syntastic_check_on_wq = 0
 let g:syntastic_sh_checkers = ['shellcheck']
 
@@ -82,11 +85,14 @@ noremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 " vim-colors-solarized
-syntax enable
-set background=dark
+"" カラースキームをsolarizedに設定する
 colorscheme solarized
 
 " 共通設定
+"" 構文ハイライトを有効にする
+syntax enable
+"" 背景色が暗い時用の設定をする
+set background=dark
 "" 検索時に大文字小文字を区別しない
 set ignorecase
 "" 検索時に大文字が入った場合は大文字小文字を区別する
