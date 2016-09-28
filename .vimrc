@@ -130,4 +130,12 @@ set novisualbell
 "" Tab,EOLなどの不可視文字を可視化する
 set list
 "" 可視化で使用する文字・記号を設定
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=tab:».,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+"" eolの色付け設定
+highlight NonText ctermfg=5 ctermbg=0
+"" tabの色付け設定
+highlight SpecialKey ctermfg=5 ctermbg=0
+"" tab文字の幅
+set tabstop=2
+"" 連続した空白に対してtab押下時に動く幅
+set softtabstop=2
