@@ -16,7 +16,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
 " Add or remove your plugins here:
-call dein#add('altercation/vim-colors-solarized')   "カラースキームをSolarizedに設定
+call dein#add('nanotech/jellybeans.vim')            "カラースキームをjellybeansに設定
 call dein#add('scrooloose/syntastic')               "シンタックスチェック
 call dein#add('Shougo/neocomplete.vim')             "キーワード補完
 call dein#add('Shougo/neosnippet.vim')              "スニペットプラグイン本体
@@ -88,9 +88,13 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 noremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
-" vim-colors-solarized
-"" カラースキームをsolarizedに設定する
-colorscheme solarized
+" jellybeans.vim
+"" カラースキームをjellybeansに設定する
+colorscheme jellybeans
+"" 背景色が暗い時用の設定をする
+set background=dark
+"" 256色表示設定
+set t_Co=256
 
 " vim-go
 let g:go_fmt_command = "gofmt"
@@ -117,8 +121,6 @@ augroup END
 " 共通設定
 "" 構文ハイライトを有効にする
 syntax enable
-"" 背景色が暗い時用の設定をする
-set background=dark
 "" 検索時に大文字小文字を区別しない
 set ignorecase
 "" 検索時に大文字が入った場合は大文字小文字を区別する
@@ -156,11 +158,7 @@ set novisualbell
 "" Tab,EOLなどの不可視文字を可視化する
 set list
 "" 可視化で使用する文字・記号を設定
-set listchars=tab:».,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
-"" eolの色付け設定
-highlight NonText ctermfg=5 ctermbg=0
-"" tabの色付け設定
-highlight SpecialKey ctermfg=5 ctermbg=0
+set listchars=eol:¬,trail:-,nbsp:%,tab:▸\ 
 "" tab文字の幅
 set tabstop=2
 "" 連続した空白に対してtab押下時に動く幅
