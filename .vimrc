@@ -24,6 +24,7 @@ call dein#add('Shougo/neosnippet-snippets')         "スニペット定義 netsn
 call dein#add('Shougo/unite.vim')                   "統合インタフェース
 call dein#add('Shougo/vimfiler')                    "ファイルエクスプローラ
 call dein#add('tpope/vim-fugitive' )                "Gitのラッパー
+call dein#add('fatih/vim-go' )                      "Go言語
 
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -62,7 +63,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 "" :wq時にチェックをしない
 let g:syntastic_check_on_wq = 0
+"" shell script
 let g:syntastic_sh_checkers = ['shellcheck']
+"" Go
+let g:syntastic_go_checkers = ['golint', 'gotype', 'govet', 'go']
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
@@ -87,6 +91,28 @@ noremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " vim-colors-solarized
 "" カラースキームをsolarizedに設定する
 colorscheme solarized
+
+" vim-go
+let g:go_fmt_command = "gofmt"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_term_enabled = 1
+let g:go_highlight_build_constraints = 1
+
+augroup GolangSettings
+  autocmd!
+  autocmd FileType go nmap <leader>gb <Plug>(go-build)
+  autocmd FileType go nmap <leader>gt <Plug>(go-test)
+  autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+  autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+  autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
+  autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+  autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+  autocmd FileType go :highlight goErr cterm=bold ctermfg=214
+  autocmd FileType go :match goErr /\<err\>/
+augroup END
 
 " 共通設定
 "" 構文ハイライトを有効にする
