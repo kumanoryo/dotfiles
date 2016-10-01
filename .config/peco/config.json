@@ -1,0 +1,8 @@
+{
+    "Style": {
+        "Basic": ["on_default", "default"],
+        "Selected": ["green", "reverse" ],
+        "Query": ["yellow", "bold"],
+        "Matched": ["red", "on_blue"]
+    }
+}
